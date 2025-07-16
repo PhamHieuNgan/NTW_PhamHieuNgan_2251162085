@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+<body>
+    <h2>Basic Info</h2><hr>
+    <table>
+        <tr>
+            <th>Employee ID</th>
+            <td>9</td>
+        </tr>
+        <tr>
+            <th>Last Name</th>
+            <td>Dodsworth</td>
+        </tr>
+        <tr>
+            <th>First Name</th>
+            <td>Anne</td>
+        </tr>
+        <tr>
+            <td><label>Gender</label></td>
+            <td>
+                <input type="radio" id="male" name="gender"><label>Male</label><br>
+                <input type="radio" id="female" name="gender"><label>Female</label><br>
+                <input type="radio" id="xxx" name="gender"><label>XXX</label><br>
+                <input type="radio" id="zzz" name="gender"><label>ZZZ</label><br>
+            </td> 
+        </tr>
+        <tr>
+            <td><label for="title">Title</label></td>
+            <td>Sales Representative</td>
+        </tr>
+        <tr>
+            <td>Suffix</td>
+            <td>Ms.</td>
+        </tr>
+        <tr>
+            <td>BirthDate</td>
+            <td>1969-07-02 00:00:00</td>
+        </tr>
+        <tr>
+            <td>HireDate</td>
+            <td>1994-11-15 00:00:00</td>
+        </tr>
+        <tr>
+            <td>SSN # (if applicable)</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Resports To</td>
+            <td>
+                <select id="reports-to" name="reports-to">
+                    <option value="buchanan" selected>Buchanan</option>
+                 </select> 
+            </td>      
+         </tr>
+    </table>
+</body>
+
+<body>
+    <h2>Contact Info</h2><hr>
+    <table>
+        <tr>
+            <td>Email</td>
+            <td><input type="text" id="email" name="email" value="name@example.com"></td>   
+        </tr>
+        <tr>
+            <td>Address</td>
+            <td>7 Houndstooth Rd.</td>
+        </tr>
+        <tr>
+            <td>City</td>
+            <td>London</td>
+        </tr>
+        <tr>
+            <td>Region</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Postal Code</td>
+            <td>WG2 7LT</td>
+        </tr>
+        <tr>
+            <td><label for="country">Country</label></td>
+            <td>
+                <select id="country" name="country">
+                    <option value="russian-federation" selected>Russian Federation</option>
+                    <option value="united-kingdom">United Kingdom</option>
+                </select>
+            </td>
+        </tr>   
+        <tr>
+            <td>US Home Phone</td>
+            <td>(234)234-2342</td>
+        </tr>    
+        <tr>
+            <td>Photo</td>
+            <td>EmpID9.bmp</td>
+        </tr>
+    </table>
+</body>
+</html>
