@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thêm Sinh Viên</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Quản lý Sinh Viên</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Sinh Viên</a></li>
+        </ul>
+        <form class="d-flex">
+          <input class="form-control me-2" type="text" placeholder="Search" />
+          <button class="btn btn-light" type="button">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container mt-4 mb-5">
+    <div class="row g-4 justify-content-center">
+      
+      <!-- Form Thêm -->
+      <div class="col-12 col-md-5">
+        <h2 class="text-primary">Thêm Sinh Viên</h2>
+        <!-- Thông báo -->
+        <div id="thongBao" class="alert alert-success" style="display: none;"></div>
+
+        <form id="formThem">
+          <div class="mb-3">
+            <label for="MaSV" class="form-label">Mã SV</label>
+            <input type="text" class="form-control" id="MaSV" name="MaSV" required />
+          </div>
+          <div class="mb-3">
+            <label for="hoten" class="form-label">Họ và Tên</label>
+            <input type="text" class="form-control" id="hoten" name="hoten" required />
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" required />
+          </div>
+          <div class="mb-3">
+            <label for="ngaysinh" class="form-label">Ngày Sinh</label>
+            <input type="date" class="form-control" id="ngaysinh" name="ngaysinh" required />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Giới Tính</label><br />
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="gioitinh" id="nam" value="Nam" required />
+              <label class="form-check-label" for="nam">Nam</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="gioitinh" id="nu" value="Nữ" required />
+              <label class="form-check-label" for="nu">Nữ</label>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="ghichu" class="form-label">Ghi Chú</label>
+            <textarea class="form-control" id="ghichu" name="ghichu" rows="3"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Thêm</button>
+        </form>
+      </div>
+
+      <!-- Danh sách SV -->
+      <div class="col-12 col-md-7">
+        <h2 class="text-primary">Danh Sách Sinh Viên</h2>
+        <div class="table-responsive">
+          <table class="table table-bordered table-hover text-center align-middle">
+            <thead class="table-light">
+              <tr>
+                <th>Mã SV</th>
+                <th>Họ và Tên</th>
+                <th>Email</th>
+                <th>Ngày Sinh</th>
+                <th>Giới Tính</th>
+                <th>Ghi Chú</th>
+                <th>Hành Động</th>
+              </tr>
+            </thead>
+            <tbody id="bangSinhVien">
+
+                 
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script>
+    // Bắt sự kiện submit
+    document.getElementById("formThem").addEventListener("submit", function (e) {
+      e.preventDefault(); // Ngăn reload
+
+      // Lấy dữ liệu từ form
+      const maSV = document.getElementById("MaSV").value.trim();
+      const hoTen = document.getElementById("hoten").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const ngaySinh = document.getElementById("ngaysinh").value;
+      const gioiTinh = document.querySelector("input[name='gioitinh']:checked")?.value || "";
+      const ghiChu = document.getElementById("ghichu").value.trim();
+
+      // Kiểm tra
+      if (!maSV || !hoTen || !email || !ngaySinh || !gioiTinh) {
+        alert("Vui lòng nhập đầy đủ thông tin!");
+        return;
+      }
+
+      // Thêm dòng mới
+      const table = document.getElementById("bangSinhVien");
+      const newRow = table.insertRow();
+
+      newRow.insertCell(0).innerText = maSV;
+      newRow.insertCell(1).innerText = hoTen;
+      newRow.insertCell(2).innerText = email;
+      newRow.insertCell(3).innerText = ngaySinh;
+      newRow.insertCell(4).innerText = gioiTinh;
+      newRow.insertCell(5).innerText = ghiChu;
+      newRow.insertCell(6).innerHTML = `
+        <a href="#" class="btn btn-sm btn-warning">Sửa</a>
+        <a href="#" class="btn btn-sm btn-danger" onclick="xoaDong(this)">Xóa</a>
+      `;
+
+      // Hiển thị thông báo
+      const tb = document.getElementById("thongBao");
+      tb.innerText = "✅ Thêm sinh viên thành công!";
+      tb.style.display = "block";
+
+      setTimeout(() => {
+        tb.innerText = "";
+        tb.style.display = "none";
+      }, 3000);
+
+      // Reset form
+      this.reset();
+    });
+
+    // Hàm xóa dòng
+    function xoaDong(btn) {
+      if (confirm("Bạn có chắc muốn xóa sinh viên này không?")) {
+        const row = btn.closest("tr");
+        row.remove();
+      }
+    }
+  </script>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
