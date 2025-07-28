@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thêm Sinh Viên</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Quản lý Sinh Viên</a>
+    </div>
+  </nav>
+
+  <div class="container mt-4 mb-5">
+    <div class="row g-4 justify-content-center">
+      <div class="col-12 col-md-5">
+        <h2 class="text-primary">Thêm Sinh Viên</h2>
+        <div id="thongBao" class="alert alert-success d-none"></div>
+
+        <form id="formThem">
+          <div class="mb-3">
+            <label for="MaSV" class="form-label">Mã SV</label>
+            <input type="text" class="form-control" id="MaSV" required />
+          </div>
+          <div class="mb-3">
+            <label for="hoten" class="form-label">Họ và Tên</label>
+            <input type="text" class="form-control" id="hoten" required />
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" required />
+          </div>
+          <div class="mb-3">
+            <label for="ngaysinh" class="form-label">Ngày Sinh</label>
+            <input type="date" class="form-control" id="ngaysinh" required />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Giới Tính</label><br />
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="gioitinh" id="nam" value="Nam" required />
+              <label class="form-check-label" for="nam">Nam</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="gioitinh" id="nữ" value="Nữ" required />
+              <label class="form-check-label" for="nữ">Nữ</label>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="ghichu" class="form-label">Ghi Chú</label>
+            <textarea class="form-control" id="ghichu" rows="3"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" id="btnSubmit">Thêm</button>
+        </form>
+      </div>
+
+      <div class="col-12 col-md-7">
+        <h2 class="text-primary">Danh Sách Sinh Viên</h2>
+        <div class="table-responsive">
+          <table class="table table-bordered table-hover text-center align-middle">
+            <thead class="table-light">
+              <tr>
+                <th>Mã SV</th>
+                <th>Họ và Tên</th>
+                <th>Email</th>
+                <th>Ngày Sinh</th>
+                <th>Giới Tính</th>
+                <th>Ghi Chú</th>
+                <th>Hành Động</th>
+              </tr>
+            </thead>
+            <tbody id="bangSinhVien"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="b7.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
